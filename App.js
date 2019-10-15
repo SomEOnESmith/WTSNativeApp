@@ -1,19 +1,34 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { Spinner } from "native-base";
+import Home from "./Components/Home";
+import { Provider } from "react-redux";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+// Store
+import store from "./redux";
+
+class App extends Component {
+  // state = {
+  //   loading: true
+  // };
+
+  // async componentDidMount() {
+  //   await Expo.Font.loadAsync({
+  //     Roboto: require("native-base/Fonts/Roboto.ttf"),
+  //     Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+  //   });
+  //   this.setState({ loading: false });
+  // }
+
+  render() {
+    // if (this.state.loading) {
+    //   return <Spinner color="white" />;
+    // }
+    return (
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
