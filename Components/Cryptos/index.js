@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { List, Content, Spinner } from "native-base";
 
 import CryptosItem from "./CryptosItem";
+import CartButton from "../CartButton";
 
 const ItemsList = props => {
   const { cryptos, loading } = props.cryptosReducer;
@@ -19,6 +20,11 @@ const ItemsList = props => {
       <List>{cryptosItem}</List>
     </Content>
   );
+};
+
+navigationOptions = {
+  title: "hodl.",
+  headerRight: <CartButton />
 };
 
 const mapStateToProps = state => ({

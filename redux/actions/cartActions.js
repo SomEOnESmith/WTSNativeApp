@@ -1,9 +1,15 @@
-import { ADD_TO_CART } from "./actionTypes";
+import { ADD_TO_CART, REMOVE_ITEM } from "./actionTypes";
 
 export const addToCart = item => {
-  console.log(item);
   return {
     type: ADD_TO_CART,
+    payload: item
+  };
+};
+
+export const removeItem = item => {
+  return {
+    type: REMOVE_ITEM,
     payload: item
   };
 };

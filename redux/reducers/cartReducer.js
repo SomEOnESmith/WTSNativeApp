@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from "../actions/actionTypes";
+import { ADD_TO_CART, REMOVE_ITEM } from "../actions/actionTypes";
 
 const initialState = {
   items: [
@@ -30,6 +30,12 @@ export default (state = initialState, { type, payload }) => {
           items: state.items.concat([item])
         };
       }
+    case REMOVE_ITEM:
+      let updatedItems = state.items.filter(item => item !== payload);
+      return {
+        ...state,
+        items: updatedItems
+      };
 
     default:
       return state;
