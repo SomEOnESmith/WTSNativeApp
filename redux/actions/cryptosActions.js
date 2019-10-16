@@ -6,7 +6,7 @@ export const getCryptos = () => {
   return async dispatch => {
     dispatch(setCryptosLoading());
     try {
-      const res = await axios.get("https://132f714b.ngrok.io/api/list/");
+      const res = await axios.get("https://7269c899.ngrok.io/api/list/");
       const cryptos = res.data.map(crypto => {
         if (crypto.rate_change >= 0) {
           crypto.rate_change = `+${crypto.rate_change}`;

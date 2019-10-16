@@ -5,12 +5,12 @@ import { Icon } from "native-base";
 //stacks
 import CryptosStack from "./CryptosStack";
 // import AuthStack from "./AuthStack";
-// import OrderStack from "./OrderStack";
+import CartStack from "./CartStack";
 
 const BottomNav = createBottomTabNavigator(
   {
-    CryptosStack: CryptosStack
-    // Coffee: CoffeeStack,
+    CryptosStack: CryptosStack,
+    CartStack: CartStack
     // Order: OrderStack
   },
   {
@@ -28,10 +28,10 @@ const BottomNav = createBottomTabNavigator(
             iconName = "home";
             iconType = "Entypo";
             break;
-          //   case "Order":
-          //     iconName = "cart";
-          //     iconType = "MaterialCommunityIcons";
-          //     break;
+          case "CartStack":
+            iconName = "cart";
+            iconType = "MaterialCommunityIcons";
+            break;
           //   default:
           //     iconName = "account";
           //     iconType = "MaterialCommunityIcons";
