@@ -1,10 +1,14 @@
 import { createStackNavigator } from "react-navigation-stack";
 import Cart from "../Components/Cart";
+import Login from "../Components/Profile/LoginForm";
+import Home from "../Components/Cryptos/index";
 // import OrderHistory from "../Components/OrderHistory";
 
 const CartStack = createStackNavigator(
   {
-    Cart: Cart
+    Cart: Cart,
+    Login: Login,
+    home: Home
     // OrderHistory: OrderHistory
   },
   {
