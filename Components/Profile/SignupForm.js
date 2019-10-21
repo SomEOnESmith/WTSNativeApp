@@ -11,7 +11,7 @@ import {
 } from "native-base";
 import { connect } from "react-redux";
 // Actions
-import { signup } from "../redux/actions";
+import { signup } from "../../redux/actions/authAction";
 
 class SignUp extends Component {
   state = {
@@ -30,8 +30,8 @@ class SignUp extends Component {
     const { username, password } = this.state;
     console.log(this.state);
     return (
-      <Container>
-        <Header />
+      <Container style={{ backgroundColor: "rgb(31,36,43)" }}>
+        <Header style={{ backgroundColor: "rgb(31,36,43)" }} />
         <Content>
           <Form>
             <Item>
@@ -56,7 +56,7 @@ class SignUp extends Component {
               />
             </Item>
 
-            <Button onPress={this.handleSubmitSignup}>
+            <Button warning onPress={this.handleSubmitSignup}>
               <Text>SignUp</Text>
             </Button>
           </Form>
@@ -65,6 +65,11 @@ class SignUp extends Component {
     );
   }
 }
+
+SignUp.navigationOptions = {
+  title: "Signup"
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     signup: userData => dispatch(signup(userData))

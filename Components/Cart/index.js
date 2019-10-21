@@ -16,7 +16,7 @@ const CartList = props => {
     <View>
       {cart}
       {!props.user ? (
-        <Button onPress={() => props.navigation.navigate("Login")}>
+        <Button warning onPress={() => props.navigation.navigate("Login")}>
           <Text>Login</Text>
         </Button>
       ) : (

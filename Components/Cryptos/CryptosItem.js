@@ -22,7 +22,7 @@ class CoffeeItem extends Component {
                   source={{ uri: cryptoItem.image }}
                   style={styles.thumbnail}
                 />
-                <Text style={styles.text}>{cryptoItem.currency}</Text>
+                <Text style={styles.text}>{cryptoItem.name}</Text>
                 <Text note style={styles.text}>
                   {cryptoItem.price}
                 </Text>

@@ -46,6 +46,9 @@ const styles = StyleSheet.create({
   background: {
     width: null,
     flex: 1
+  },
+  loginbutton: {
+    backgroundColor: "red"
   }
 });
 export default styles;
