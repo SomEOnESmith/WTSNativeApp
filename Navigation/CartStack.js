@@ -2,23 +2,25 @@ import { createStackNavigator } from "react-navigation-stack";
 import Cart from "../Components/Cart";
 import Login from "../Components/Profile/LoginForm";
 import Home from "../Components/Cryptos/index";
+import Signup from "../Components/Profile/SignupForm";
 // import OrderHistory from "../Components/OrderHistory";
 
 const CartStack = createStackNavigator(
   {
     Cart: Cart,
     Login: Login,
-    home: Home
+    Home: Home,
+    Signup: Signup
     // OrderHistory: OrderHistory
   },
   {
     initialRouteName: "Cart",
     cardStyle: {
-      backgroundColor: "rgb(20,90,100)"
+      backgroundColor: "rgb(31,36,43)"
     },
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: "rgb(20,90,100)"
+        backgroundColor: "rgb(26,29,33)"
       },
       headerTitleStyle: {
         fontWeight: "bold"

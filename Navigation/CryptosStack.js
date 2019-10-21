@@ -9,11 +9,11 @@ const CryptosStack = createStackNavigator(
   {
     initialRouteName: "CryptosList",
     cardStyle: {
-      backgroundColor: "rgb(20,90,100)"
+      backgroundColor: "rgb(31,36,43)"
     },
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: "rgb(20,90,100)"
+        backgroundColor: "rgb(26,29,33)"
       },
       headerTitleStyle: {
         fontWeight: "bold"

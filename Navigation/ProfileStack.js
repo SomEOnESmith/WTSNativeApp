@@ -1,19 +1,23 @@
 import { createStackNavigator } from "react-navigation-stack";
 
 import Profile from "../Components/Profile/Profile";
+import Login from "../Components/Profile/LoginForm";
+import Signup from "../Components/Profile/SignupForm";
 
 const ProfileStack = createStackNavigator(
   {
-    Profile: Profile
+    Login: Login,
+    Profile: Profile,
+    Signup: Signup
   },
   {
     initialRouteName: "Profile",
     cardStyle: {
-      backgroundColor: "rgb(20,90,100)"
+      backgroundColor: "rgb(31,36,43)"
     },
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: "rgb(20,90,100)"
+        backgroundColor: "rgb(26,29,33)"
       },
       headerTitleStyle: {
         fontWeight: "bold"

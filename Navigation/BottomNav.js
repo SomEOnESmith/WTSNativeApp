@@ -35,7 +35,7 @@ const BottomNav = createBottomTabNavigator(
             iconType = "MaterialCommunityIcons";
             break;
           case "ProfileStack":
-            iconName = "profile";
+            iconName = "account";
             iconType = "MaterialCommunityIcons";
             break;
 
@@ -44,7 +44,11 @@ const BottomNav = createBottomTabNavigator(
           //     iconType = "MaterialCommunityIcons";
         }
         return (
-          <Icon name={iconName} type={iconType} style={{ color: tintColor }} />
+          <Icon
+            name={iconName}
+            type={iconType}
+            style={{ color: "rgb(77, 92, 106)" }}
+          />
         );
       }
     }),
@@ -53,7 +57,7 @@ const BottomNav = createBottomTabNavigator(
       activeTintColor: "white",
       inactiveTintColor: "black",
       style: {
-        backgroundColor: "rgb(20,90,100)"
+        backgroundColor: "rgb(25,29,33)"
       }
     }
   }

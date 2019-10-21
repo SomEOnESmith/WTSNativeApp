@@ -6,9 +6,10 @@ import {
   Form,
   Item,
   Input,
-  Button,
-  Text
+  Text,
+  Button
 } from "native-base";
+
 import { connect } from "react-redux";
 // Actions
 import { login } from "../../redux/actions/authAction";
@@ -29,8 +30,8 @@ class LoginForm extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <Container>
-        <Header />
+      <Container style={{ backgroundColor: "rgb(31,36,43)" }}>
+        <Header style={{ backgroundColor: "rgb(31,36,43)" }} />
         <Content>
           <Form>
             <Item>
@@ -38,6 +39,7 @@ class LoginForm extends Component {
                 name="username"
                 value={username}
                 placeholder="Username"
+                autoCapitalize={false}
                 onChangeText={username =>
                   this.handleChange({ username: username })
                 }
@@ -54,18 +56,32 @@ class LoginForm extends Component {
                 }
               />
             </Item>
-            <Button onPress={this.handleSubmitLogin}>
+
+            <Button
+              warning
+              style={{ color: "white" }}
+              onPress={this.handleSubmitLogin}
+            >
               <Text>Login</Text>
             </Button>
-            <Text onPress={() => this.props.navigation.push("SignupForm")}>
-              Signup
-            </Text>
+
+            <Button
+              warning
+              onPress={() => this.props.navigation.replace("Signup")}
+            >
+              <Text>Signup</Text>
+            </Button>
           </Form>
         </Content>
       </Container>
     );
   }
 }
+
+LoginForm.navigationOptions = {
+  title: "Login"
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     login: (userData, navigation) => dispatch(login(userData, navigation))
