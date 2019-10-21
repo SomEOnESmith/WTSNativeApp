@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 
 // NativeBase Components
-import { Text, Row, Grid, Container, View } from "native-base";
+import { Text, Row, Grid, Container, View, Button } from "native-base";
 
 import { connect } from "react-redux";
+import { logout } from "../../redux/actions/authAction";
 
 class Profile extends Component {
   componentDidUpdate() {
@@ -12,25 +13,33 @@ class Profile extends Component {
     }
   }
   render() {
-    const { user } = this.props;
-    if (!user) return this.props.navigation.replace("Login");
+    const { profile } = this.props;
+    if (!profile) return this.props.navigation.replace("Login");
     return (
       <Grid style={{ borderBottomWidth: 0 }}>
         <Row style={{ height: 30 }}>
           <Text style={{ color: "white", marginLeft: 16 }}>
-            Username: {user.username}
+            Username: {profile.user.username}
           </Text>
         </Row>
         <Row style={{ height: 30 }}>
           <Text style={{ color: "white", marginLeft: 16 }}>
-            Email: {user.email}
+            Email: {profile.user.email}
           </Text>
         </Row>
         <Row style={{ height: 30 }}>
           <Text style={{ color: "white", marginLeft: 16 }}>
-            Full Name: {user.first_name} {user.last_name}
+            Full Name: {profile.user.first_name} {profile.user.last_name}
           </Text>
         </Row>
+        <Row style={{ height: 30 }}>
+          <Text style={{ color: "white", marginLeft: 16 }}>
+            Birthdate: {profile.birth_date}
+          </Text>
+        </Row>
+        <Button onPress={() => this.props.logout()}>
+          <Text>logout</Text>
+        </Button>
       </Grid>
     );
   }
@@ -39,7 +48,14 @@ Profile.navigationOptions = {
   title: "Profile"
 };
 const mapStateToProps = state => ({
-  user: state.authReducer
+  profile: state.authReducer
 });
 
-export default connect(mapStateToProps)(Profile);
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Profile);

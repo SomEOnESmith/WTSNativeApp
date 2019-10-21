@@ -6,6 +6,3 @@ export const REMOVE_ITEM = "REMOVE_ITEM";
 export const LOGOUT_USER = "LOGOUT_USER";
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
-
-// ///// names
-export const GET_NAMES = "GET_NAMES";
