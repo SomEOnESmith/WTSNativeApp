@@ -14,7 +14,7 @@ class Profile extends Component {
   }
   render() {
     const { profile } = this.props;
-    if (!profile) return this.props.navigation.replace("Login");
+    if (!profile) return this.props.navigation.navigate("Login");
     return (
       <Grid style={{ borderBottomWidth: 0 }}>
         <Row style={{ height: 30 }}>

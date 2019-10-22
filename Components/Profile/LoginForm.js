@@ -36,6 +36,7 @@ class LoginForm extends Component {
           <Form>
             <Item>
               <Input
+                style={{ color: "white" }}
                 name="username"
                 value={username}
                 placeholder="Username"
@@ -47,6 +48,7 @@ class LoginForm extends Component {
             </Item>
             <Item last>
               <Input
+                style={{ color: "white" }}
                 value={password}
                 placeholder="Password"
                 secureTextEntry

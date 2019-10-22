@@ -44,19 +44,13 @@ export const login = (userData, navigation) => {
   };
 };
 
-export const signup = userData => {
+export const signup = (userData, navigation) => {
   return async dispatch => {
     try {
       let response = await instance.post("api/register/", userData);
-      let user = response.data;
-      let decodedUser = jwt_decode(user.access);
-      setAuthToken(user.access);
-      dispatch(setCurrentUser(decodedUser, user.access));
+      dispatch(login(userData, navigation));
     } catch (error) {
-      dispatch({
-        type: actionTypes.SET_ERRORS,
-        payload: error.response.data
-      });
+      console.error(error);
     }
   };
 };

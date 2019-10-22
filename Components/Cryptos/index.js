@@ -5,6 +5,7 @@ import { List, Content, Spinner } from "native-base";
 
 import CryptosItem from "./CryptosItem";
 import CartButton from "../CartButton";
+// import {  } from "react-native";
 
 const ItemsList = props => {
   const { cryptos, loading } = props.cryptosReducer;

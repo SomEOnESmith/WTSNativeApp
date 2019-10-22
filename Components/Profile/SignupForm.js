@@ -24,7 +24,7 @@ class SignUp extends Component {
   };
 
   handleSubmitSignup = event => {
-    this.props.signup(this.state);
+    this.props.signup(this.state, this.props.navigation);
   };
   render() {
     const { username, password } = this.state;
@@ -36,6 +36,7 @@ class SignUp extends Component {
           <Form>
             <Item>
               <Input
+                style={{ color: "white" }}
                 name="username"
                 value={username}
                 placeholder="Username"
@@ -46,6 +47,7 @@ class SignUp extends Component {
             </Item>
             <Item last>
               <Input
+                style={{ color: "white" }}
                 value={password}
                 placeholder="Password"
                 secureTextEntry
@@ -72,7 +74,7 @@ SignUp.navigationOptions = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signup: userData => dispatch(signup(userData))
+    signup: (userData, navigation) => dispatch(signup(userData, navigation))
   };
 };
 export default connect(
