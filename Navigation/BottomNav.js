@@ -39,9 +39,9 @@ const BottomNav = createBottomTabNavigator(
             iconType = "MaterialCommunityIcons";
             break;
 
-          //   default:
-          //     iconName = "account";
-          //     iconType = "MaterialCommunityIcons";
+          // default:
+          //   iconName = "account";
+          //   iconType = "MaterialCommunityIcons";
         }
         return (
           <Icon

@@ -6,11 +6,11 @@ import { connect } from "react-redux";
 //component
 import CartItem from "./CartItem";
 import { View, Button, Text } from "native-base";
-import { removeItem } from "../../redux/actions/cartActions";
+import { removeItem, checkout } from "../../redux/actions/cartActions";
 
 const CartList = props => {
-  const cart = props.cartItems.map(item => (
-    <CartItem item={item} key={item.idx} removeItem={props.removeItem} />
+  const cart = props.cartItems.map((item,index) => (
+    <CartItem item={item} key={index} removeItem={props.removeItem} />
   ));
   return (
     <View>
@@ -20,7 +20,7 @@ const CartList = props => {
           <Text>Login</Text>
         </Button>
       ) : (
-        <Button onPress={() => props.navigation.navigate("home")}>
+        <Button onPress={() => props.checkout(props.cartItems)}>
           <Text>Checkout</Text>
         </Button>
       )}
@@ -34,7 +34,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeItem: item => dispatch(removeItem(item))
+  removeItem: item => dispatch(removeItem(item)),
+  checkout: cartCryptosItem => dispatch(checkout(cartCryptosItem))
 });
 
 export default connect(

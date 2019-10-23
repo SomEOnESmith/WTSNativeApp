@@ -1,4 +1,4 @@
-import { GET_CRYPTOS, SET_LOADING, GET_NAMES } from "../actions/actionTypes";
+import { GET_CRYPTOS, SET_LOADING } from "../actions/actionTypes";
 
 const initialState = {
   cryptos: [],

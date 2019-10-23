@@ -1,56 +1,78 @@
 import React, { Component } from "react";
-import { ImageBackground, View } from "react-native";
 import { withNavigation } from "react-navigation";
-// NativeBase Components
+
+import { connect } from "react-redux"
+
+// Components
+import { View } from "react-native";
 import {
   ListItem,
   Card,
   CardItem,
   Thumbnail,
   Text,
-  Left,
   Button,
-  List,
-  Content
+  Row,
 } from "native-base";
 
 // Style
 import styles from "./styles";
+import { TextInput } from "react-native-gesture-handler";
+import { addToCart } from "../../redux/actions/cartActions";
 
 class CryptoItem extends Component {
+  state = {
+    currency: this.props.cryptoItem.id,
+    quantity: ""
+  };
   render() {
     const { cryptoItem } = this.props;
     return (
-      <View>
-        <View style={styles.overlay} />
-        <Content>
-          <List>
-            <ListItem style={styles.listitem}>
-              <Card style={styles.transparent}>
-                <CardItem style={styles.transparent}>
-                  <Left>
-                    <Thumbnail source={{ uri: cryptoItem.logo_url }} />
-                    <Text style={styles.text}>{cryptoItem.name}</Text>
-                    <Text note>{cryptoItem.price}</Text>
-                    <Text note style={styles.text}>
-                      {cryptoItem.rate_change}
-                    </Text>
-                    <Button
-                      style={{ flex: 1 }}
-                      warning
-                      onPress={() => this.props.addToCart(this.state)}
-                    >
-                      <Text>Add To Cart</Text>
-                    </Button>
-                  </Left>
-                </CardItem>
-              </Card>
-            </ListItem>
-          </List>
-        </Content>
+            <View>
+        <View />
+        <ListItem>
+          <Card style={{ flex: 1 }}>
+            <Row>
+              <CardItem>
+                <Thumbnail bordered source={{ uri: cryptoItem.image }} />
+                <Text>{cryptoItem.currency}</Text>
+              </CardItem>
+              <CardItem>
+                <Text>{cryptoItem.price} KWD</Text>
+                <Text note>{cryptoItem.rate_change} %</Text>
+              </CardItem>
+            </Row>
+            <Row>
+              <TextInput
+                style={{ height: 40, flex: 1 }}
+                placeholder="quantity"
+                onChangeText={quantity => this.setState({ quantity })}
+                value={this.state.quantity}
+              />
+            </Row>
+            <Row>
+              <Button
+                style={{ flex: 1 }}
+                warning
+                onPress={() => this.props.addToCart(this.state)}
+              >
+                <Text>Add To Cart</Text>
+              </Button>
+            </Row>
+          </Card>
+        </ListItem>
       </View>
     );
   }
 }
 
-export default withNavigation(CryptoItem);
+const mapDispatchToProps = dispatch => ({
+  addToCart: item => dispatch(addToCart(item))
+});
+
+export default withNavigation(
+  connect(
+    null,
+    mapDispatchToProps
+  )(CryptoItem)
+);

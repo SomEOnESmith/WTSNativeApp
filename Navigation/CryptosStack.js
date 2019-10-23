@@ -1,6 +1,6 @@
 import { createStackNavigator } from "react-navigation-stack";
 
-import List from "../Components/Cryptos";
+import List from "../Components/Cryptos/index";
 
 const CryptosStack = createStackNavigator(
   {
