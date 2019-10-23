@@ -1,14 +1,7 @@
-import { ADD_TO_CART, REMOVE_ITEM } from "../actions/actionTypes";
+import { ADD_TO_CART, REMOVE_ITEM, CHECKOUT } from "../actions/actionTypes";
 
 const initialState = {
-  items: [
-    {
-      currency: "Bitcoin",
-      quantity: 1.076,
-      price: 8218,
-      rate: 0.3
-    }
-  ]
+  items: []
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -18,8 +11,10 @@ export default (state = initialState, { type, payload }) => {
       const newitem = state.items.find(
         itemObj => item.currency === itemObj.currency
       );
+      console.log("ITEM:", item, "newitem:", newitem);
       if (newitem) {
         newitem.quantity = (+newitem.quantity + +item.quantity).toFixed(3);
+
         return {
           ...state,
           items: [...state.items]
@@ -30,11 +25,18 @@ export default (state = initialState, { type, payload }) => {
           items: state.items.concat([item])
         };
       }
+
     case REMOVE_ITEM:
       let updatedItems = state.items.filter(item => item !== payload);
       return {
         ...state,
         items: updatedItems
+      };
+
+    case CHECKOUT:
+      return {
+        ...state,
+        items: []
       };
 
     default:

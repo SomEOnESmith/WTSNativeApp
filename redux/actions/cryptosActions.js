@@ -8,19 +8,12 @@ export const getCryptos = () => {
     dispatch(setCryptosLoading());
     try {
       const res = await Axios.get(
-        "https://api.nomics.com/v1/currencies/ticker?key=812c00f4b05ddca60825eb0f141116e2"
+        "http://127.0.0.1:8000/api/list/"
       );
       const cryptos = res.data.map(crypto => {
         if (crypto.rate_change >= 0) {
           crypto.rate_change = `+${crypto.rate_change}`;
         }
-        {
-          crypto.currency;
-        }
-        {
-          crypto.rate;
-        }
-
         return crypto;
       });
       dispatch({
@@ -28,7 +21,7 @@ export const getCryptos = () => {
         payload: cryptos
       });
     } catch (err) {
-      console.error("Error while fetching shops", err.response);
+      console.error("Error while fetching cryptos", err.response);
     }
   };
 };

@@ -7,14 +7,13 @@ import CryptosItem from "./CryptosItem";
 import CartButton from "../CartButton";
 // import {  } from "react-native";
 
-const ItemsList = props => {
+const CryptosItemsList = props => {
   const { cryptos, loading } = props.cryptosReducer;
-
   if (loading) {
     return <Spinner />;
   }
-  const cryptosItem = cryptos.map(cryptoItem => (
-    <CryptosItem cryptoItem={cryptoItem} key={cryptoItem.id} />
+  const cryptosItem = cryptos.map((cryptoItem,index) => (
+    <CryptosItem cryptoItem={cryptoItem} key={index} />
   ));
   return (
     <Content>
@@ -32,4 +31,4 @@ const mapStateToProps = state => ({
   cryptosReducer: state.cryptosReducer
 });
 
-export default connect(mapStateToProps)(ItemsList);
+export default connect(mapStateToProps)(CryptosItemsList);
