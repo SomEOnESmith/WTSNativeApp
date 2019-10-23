@@ -29,6 +29,28 @@ export const checkForExpiredToken = () => {
   };
 };
 
+const setCurrentUser = user => {
+  return async dispatch => {
+    if (user) {
+      try {
+        let response = await instance.get("api/profile/");
+        const profile = response.data;
+        dispatch({
+          type: actionTypes.SET_CURRENT_USER,
+          payload: profile
+        });
+      } catch (err) {
+        console.error("Error while profile", err);
+      }
+    } else {
+      dispatch({
+        type: actionTypes.SET_CURRENT_USER,
+        payload: null
+      });
+    }
+  };
+};
+
 export const login = (userData, navigation) => {
   return async dispatch => {
     try {
@@ -37,7 +59,7 @@ export const login = (userData, navigation) => {
       let decodedUser = jwt_decode(user.access);
       setAuthToken(user.access);
       await dispatch(setCurrentUser(decodedUser, user.access));
-      navigation.goBack();
+      navigation.navigate("Cart");
     } catch (error) {
       console.error(error);
     }
@@ -57,27 +79,19 @@ export const signup = (userData, navigation) => {
 
 export const logout = () => {
   setAuthToken();
-  return setCurrentUser();
+  return {
+    type: actionTypes.SET_CURRENT_USER,
+    payload: null
+  };
 };
 
-const setCurrentUser = user => {
+export const editProfile = (userData, navigation) => {
   return async dispatch => {
-    if (user) {
-      try {
-        let response = await instance.get("api/profile/");
-        const profile = response.data;
-        dispatch({
-          type: actionTypes.SET_CURRENT_USER,
-          payload: profile
-        });
-      } catch (err) {
-        console.error("Error while profile", err);
-      }
-    } else {
-      dispatch({
-        type: actionTypes.SET_CURRENT_USER,
-        payload: user
-      });
+    try {
+      let res = await instance.post("api/edit/", userData);
+      navigation.goBack();
+    } catch (error) {
+      console.error(error);
     }
   };
 };

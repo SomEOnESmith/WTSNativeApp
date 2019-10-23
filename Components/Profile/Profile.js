@@ -5,16 +5,25 @@ import { Text, Row, Grid, Container, View, Button } from "native-base";
 
 import { connect } from "react-redux";
 import { logout } from "../../redux/actions/authAction";
+import EditButton from "./EditButton";
 
 class Profile extends Component {
   componentDidUpdate() {
-    if (!this.props.user) {
+    if (!this.props.profile) {
       this.props.navigation.navigate("Login");
     }
   }
+
+  handleLogout = () => {
+    this.props.logout();
+    this.props.navigation.navigate("Login");
+  };
+
   render() {
     const { profile } = this.props;
-    if (!profile) return this.props.navigation.navigate("Login");
+    if (!this.props.profile) {
+      return this.props.navigation.navigate("Login");
+    }
     return (
       <Grid style={{ borderBottomWidth: 0 }}>
         <Row style={{ height: 30 }}>
@@ -37,15 +46,17 @@ class Profile extends Component {
             Birthdate: {profile.birth_date}
           </Text>
         </Row>
-        <Button onPress={() => this.props.logout()}>
+        <Button onPress={() => this.handleLogout()}>
           <Text>logout</Text>
         </Button>
       </Grid>
     );
   }
 }
+
 Profile.navigationOptions = {
-  title: "Profile"
+  title: "Profile",
+  headerRight: <EditButton />
 };
 const mapStateToProps = state => ({
   profile: state.authReducer
