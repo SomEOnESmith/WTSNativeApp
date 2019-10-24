@@ -11,7 +11,6 @@ export default (state = initialState, { type, payload }) => {
       const newitem = state.items.find(
         itemObj => item.currency === itemObj.currency
       );
-      console.log("ITEM:", item, "newitem:", newitem);
       if (newitem) {
         newitem.quantity = (+newitem.quantity + +item.quantity).toFixed(3);
 
