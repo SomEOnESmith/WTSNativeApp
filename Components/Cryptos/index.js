@@ -22,7 +22,7 @@ const CryptosItemsList = props => {
   );
 };
 
-navigationOptions = {
+CryptosItemsList.navigationOptions = {
   title: "hodl.",
   headerRight: <CartButton />
 };

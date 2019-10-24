@@ -1,5 +1,6 @@
 import React from "react";
 
+import { StackActions, NavigationActions } from "react-navigation";
 //redux
 import { connect } from "react-redux";
 
@@ -9,14 +10,21 @@ import { View, Button, Text } from "native-base";
 import { removeItem, checkout } from "../../redux/actions/cartActions";
 
 const CartList = props => {
-  const cart = props.cartItems.map((item,index) => (
+  const cart = props.cartItems.map((item, index) => (
     <CartItem item={item} key={index} removeItem={props.removeItem} />
   ));
+
+  const resetAction = StackActions.reset({
+    index: 0,
+    key: null,
+    actions: [NavigationActions.navigate({ routeName: "Auth" })]
+  });
+
   return (
     <View>
       {cart}
       {!props.user ? (
-        <Button warning onPress={() => props.navigation.navigate("Login")}>
+        <Button warning onPress={() => props.navigation.navigate("Auth")}>
           <Text>Login</Text>
         </Button>
       ) : (

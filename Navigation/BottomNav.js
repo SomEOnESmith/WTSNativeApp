@@ -4,7 +4,6 @@ import { Icon } from "native-base";
 
 //stacks
 import CryptosStack from "./CryptosStack";
-// import AuthStack from "./AuthStack";
 import CartStack from "./CartStack";
 import ProfileStack from "./ProfileStack";
 
@@ -13,8 +12,8 @@ const BottomNav = createBottomTabNavigator(
     CryptosStack: CryptosStack,
     CartStack: CartStack,
     ProfileStack: ProfileStack
-    // Order: OrderStack
   },
+  //initial route profile login
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
@@ -22,10 +21,6 @@ const BottomNav = createBottomTabNavigator(
         let iconName = "";
         let iconType = "";
         switch (routeName) {
-          //   case "Auth":
-          //     iconName = "account";
-          //     iconType = "MaterialCommunityIcons";
-          //     break;
           case "CryptosStack":
             iconName = "home";
             iconType = "Entypo";
@@ -54,8 +49,8 @@ const BottomNav = createBottomTabNavigator(
     }),
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: "white",
-      inactiveTintColor: "black",
+      activeBackgroundColor: "white",
+      inactiveBackgroundColor: "black",
       style: {
         backgroundColor: "rgb(25,29,33)"
       }

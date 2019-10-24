@@ -4,17 +4,27 @@ import React, { Component } from "react";
 import { Text, Row, Grid, Container, View, Button } from "native-base";
 
 import { connect } from "react-redux";
-import { logout } from "../../redux/actions/authAction";
+import EditButton from "./EditButton";
+import Wallet from "./Wallet";
+import LogoutButton from "./LogoutButton";
 
 class Profile extends Component {
   componentDidUpdate() {
-    if (!this.props.user) {
+    if (!this.props.profile) {
       this.props.navigation.navigate("Login");
     }
   }
+
   render() {
     const { profile } = this.props;
-    if (!profile) return this.props.navigation.navigate("Login");
+    if (!this.props.profile) {
+      return this.props.navigation.navigate("Login");
+    }
+
+    const transactions = profile.transactions.map((transaction, index) => (
+      <Wallet transaction={transaction} key={index} />
+    ));
+
     return (
       <Grid style={{ borderBottomWidth: 0 }}>
         <Row style={{ height: 30 }}>
@@ -24,12 +34,17 @@ class Profile extends Component {
         </Row>
         <Row style={{ height: 30 }}>
           <Text style={{ color: "white", marginLeft: 16 }}>
+            Full Name: {profile.user.first_name} {profile.user.last_name}
+          </Text>
+        </Row>
+        <Row style={{ height: 30 }}>
+          <Text style={{ color: "white", marginLeft: 16 }}>
             Email: {profile.user.email}
           </Text>
         </Row>
         <Row style={{ height: 30 }}>
           <Text style={{ color: "white", marginLeft: 16 }}>
-            Full Name: {profile.user.first_name} {profile.user.last_name}
+            Phone number: {profile.phone_number}
           </Text>
         </Row>
         <Row style={{ height: 30 }}>
@@ -37,25 +52,22 @@ class Profile extends Component {
             Birthdate: {profile.birth_date}
           </Text>
         </Row>
-        <Button onPress={() => this.props.logout()}>
-          <Text>logout</Text>
-        </Button>
+        <Row style={{ height: 30 }}>
+          <Text style={{ color: "white", marginLeft: 16 }}>Transactions =</Text>
+          <View>{transactions}</View>
+        </Row>
       </Grid>
     );
   }
 }
+
 Profile.navigationOptions = {
-  title: "Profile"
+  title: "Profile",
+  headerRight: <EditButton />,
+  headerLeft: <LogoutButton />
 };
 const mapStateToProps = state => ({
   profile: state.authReducer
 });
 
-const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Profile);
+export default connect(mapStateToProps)(Profile);

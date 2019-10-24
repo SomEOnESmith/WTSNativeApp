@@ -1,14 +1,12 @@
 import { createStackNavigator } from "react-navigation-stack";
 
 import Profile from "../Components/Profile/Profile";
-import Login from "../Components/Profile/LoginForm";
-import Signup from "../Components/Profile/SignupForm";
+import EditProfileForm from "../Components/Profile/EditProfileForm";
 
 const ProfileStack = createStackNavigator(
   {
-    Login: Login,
     Profile: Profile,
-    Signup: Signup
+    EditProfile: EditProfileForm
   },
   {
     initialRouteName: "Profile",

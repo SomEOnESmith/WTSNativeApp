@@ -5,15 +5,16 @@ import { withNavigation } from "react-navigation";
 import { connect } from "react-redux";
 
 const CartButton = props => {
-  let quantity = props.items.length;
+  let quantity = props.cartItems.length;
   return (
     <Button transparent>
       <Text style={{ color: "white", fontSize: 25 }}>
-        {quantity}
+        {quantity === 0? "" :quantity}
         <Icon
           onPress={() => props.navigation.navigate("CartStack")}
           name="shoppingcart"
           type="AntDesign"
+          style= {{ color:"white" }}
         />
       </Text>
     </Button>

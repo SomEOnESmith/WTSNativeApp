@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withNavigation } from "react-navigation";
 
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 
 // Components
 import { View } from "react-native";
@@ -12,7 +12,7 @@ import {
   Thumbnail,
   Text,
   Button,
-  Row,
+  Row
 } from "native-base";
 
 // Style
@@ -28,7 +28,7 @@ class CryptoItem extends Component {
   render() {
     const { cryptoItem } = this.props;
     return (
-            <View>
+      <View>
         <View />
         <ListItem>
           <Card style={{ flex: 1 }}>
@@ -39,6 +39,8 @@ class CryptoItem extends Component {
               </CardItem>
               <CardItem>
                 <Text>{cryptoItem.price} KWD</Text>
+              </CardItem>
+              <CardItem>
                 <Text note>{cryptoItem.rate_change} %</Text>
               </CardItem>
             </Row>

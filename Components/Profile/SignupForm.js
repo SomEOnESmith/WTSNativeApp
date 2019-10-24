@@ -19,7 +19,6 @@ class SignUp extends Component {
     password: ""
   };
   handleChange = keyValue => {
-    // console.log("this is the object" + object);
     this.setState(keyValue);
   };
 
@@ -28,7 +27,6 @@ class SignUp extends Component {
   };
   render() {
     const { username, password } = this.state;
-    console.log(this.state);
     return (
       <Container style={{ backgroundColor: "rgb(31,36,43)" }}>
         <Header style={{ backgroundColor: "rgb(31,36,43)" }} />

@@ -1,17 +1,12 @@
 import { createStackNavigator } from "react-navigation-stack";
+
 import Cart from "../Components/Cart";
-import Login from "../Components/Profile/LoginForm";
-import Home from "../Components/Cryptos/index";
-import Signup from "../Components/Profile/SignupForm";
-// import OrderHistory from "../Components/OrderHistory";
+import AuthStack from "./AuthStack";
 
 const CartStack = createStackNavigator(
   {
     Cart: Cart,
-    Login: Login,
-    Home: Home,
-    Signup: Signup
-    // OrderHistory: OrderHistory
+    Auth: AuthStack
   },
   {
     initialRouteName: "Cart",
